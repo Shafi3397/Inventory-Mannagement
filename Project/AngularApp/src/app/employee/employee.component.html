@@ -1,0 +1,102 @@
+
+
+
+<div class="row">
+  <div class="col s12">
+   
+    <div class="card">
+     <div class="in2"> Inventory Mannager</div>
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+              <div class="row"> <br>
+                <h4>Add Product</h4>
+                <div class="input-field col s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter Product Name" required>
+                  <label>Product Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Mention The Brand Name">
+                  <label>Brand :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Mention Quantity">
+                  <label>Quantity :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="Price per peice">
+                  <label>Price :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(employeeForm)">Clear</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!employeeForm.valid">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <br><br><br><br><br><br>
+
+          <div class="col s7">
+          <div class="inventory"> <img src="../../assets/Inventory.jpg" height="400px" width="730px">
+          </div>
+        </div>
+        <br><br><br>
+          <div class="col s12">
+            <h4>Product Details</h4>
+            <p align="center">
+            
+              **Note To Edit Product hit the edit button and scroll up to the Add prodcuct Option.</p>
+              <table class="responsive-table highlight">
+                
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Brand</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let emp of employeeService.employees">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.position}}</td>
+                    <td>{{emp.office}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(emp)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                      </td>
+                    <td>
+                        <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
